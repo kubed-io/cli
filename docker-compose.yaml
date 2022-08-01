@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+
+  kubed-cli:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        ARCH: arm64
+      #   KUSTOMIZE_VERSION: $KUSTOMIZE_VERSION
+      #   KUBECTL_VERSION: $KUBECTL_VERSION
+      #   KREW_VERSION: $KREW_VERSION
+      #   YQ_VERSION: $YQ_VERSION
+      #   HELM_VERSION: $HELM_VERSION
+    # image: ${CI_REGISTRY}/kube-tools:${CI_VERSION}
+    image: kubed/cli:latest
+    container_name: kubed-cli
+    stdin_open: true
+    tty: true
+    # privileged: true
+    volumes:
+    - ~/.kube:/kubed/.kube
+    - ~/.aws:/kubed/.aws
+    entrypoint:
+    - /bin/bash
+    - -c
+    command: 
+    - tail
+    - -f
+    - /dev/null
+    x-bake:
+      tags:
+      - kubed/cli:latest
+      - kubed/cli:v1.0.0
+      platforms:
+      - linux/amd64
+      - linux/arm64

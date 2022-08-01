@@ -1,0 +1,7 @@
+apiVersion: cubizoid
+kind: EcrCreds
+metadata:
+  name: regcreds
+spec:
+  email: foo@bar.com
+  

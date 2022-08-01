@@ -1,0 +1,8 @@
+apiVersion: cubizoid
+kind: EnvSecret
+metadata:
+  name: test-secret
+variables:
+- HOME
+- XDG_CONFIG_HOME
+- USER

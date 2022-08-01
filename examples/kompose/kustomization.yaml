@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+generators:
+- kompose.yaml
+configMapGenerator:
+- name: komposed
+  literals:
+  - FOO=bar
+  - CAKE=chocolate
+generatorOptions:
+  disableNameSuffixHash: true
