@@ -43,7 +43,6 @@ do
    files+=(-f "$file")
 done
 
-
 kompose convert \
    "${komposeArgs[@]}" \
    --stdout "${files[@]}" \
